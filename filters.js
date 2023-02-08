@@ -3,19 +3,15 @@
  *
  * Plugin that adds a new tab to the settings section to create client-side e-mail filtering.
  *
- * @version 2.1.4
+ * @version 2.2.0
  * @author Roberto Zarrelli <zarrelli@unimol.it>
- * @developer Artur Petrov <admin@gtn18.ru>
+ * @developer Artur Petrov <artur@phpchain.ru>
  */
 
 
 if (window.rcmail) {
   rcmail.addEventListener('init', function(evt) {
-    var tab = $('<span>').attr('id', 'settingstabpluginfilters').addClass('tablink');    
-    var button = $('<a>').attr('href', rcmail.env.comm_path+'&_action=plugin.filters').html(rcmail.gettext('filters', 'filters')).appendTo(tab);    
-        
-    // add button and register command
-    rcmail.add_element(tab, 'tabs');
+    // register command
     rcmail.register_command('plugin.filters-delete', function(){ rcmail.goto_url('plugin.filters-delete') }, true);    
     rcmail.register_command('plugin.filters-save', function(){ 
       var input_searchstring = rcube_find_object('_searchstring');      
